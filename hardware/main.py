@@ -3,8 +3,8 @@ from gpiozero import LED
 from time import sleep
 
 URL = "http://35.246.141.93:9090/state"
-green = LED(14)
-red = LED(16)
+green = LED(16)
+red = LED(14)
 
 while True:
     sleep(0.5)
