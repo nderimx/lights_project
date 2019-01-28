@@ -20,6 +20,33 @@ export function pageLoaded(args: EventData) {
     let page = <Page>args.object;
     page.bindingContext = new HomeViewModel();
 
+    // onload reset
+    request({
+        url: "http://1.2.3.4:9090",
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        content: JSON.stringify({
+            green: "OFF"
+        })
+    }).then((response) => {
+        const result = response.content.toJSON();
+        console.log(result.json)
+    }, (e) => {
+    });
+    request({
+        url: "http://1.2.3.4:9090",
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        content: JSON.stringify({
+            red: "OFF"
+        })
+    }).then((response) => {
+        const result = response.content.toJSON();
+        console.log(result.json)
+    }, (e) => {
+    });
+    
+
     // switch -----------------------------------
 
     // >> switch-checked-change-event-ts
@@ -28,7 +55,7 @@ export function pageLoaded(args: EventData) {
     greenSwitch.on("checkedChange", (swargs) => {
         if ((<Switch>swargs.object).checked) {
             request({
-                url: "http://35.246.141.93:9090",
+                url: "http://1.2.3.4:9090",
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 content: JSON.stringify({
@@ -41,7 +68,7 @@ export function pageLoaded(args: EventData) {
             });
         } else {
             request({
-                url: "http://35.246.141.93:9090",
+                url: "http://1.2.3.4:9090",
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 content: JSON.stringify({
@@ -58,7 +85,7 @@ export function pageLoaded(args: EventData) {
     redSwitch.on("checkedChange", (swargs) => {
         if ((<Switch>swargs.object).checked) {
             request({
-                url: "http://35.246.141.93:9090",
+                url: "http://1.2.3.4:9090",
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 content: JSON.stringify({
@@ -71,7 +98,7 @@ export function pageLoaded(args: EventData) {
             });
         } else {
             request({
-                url: "http://35.246.141.93:9090",
+                url: "http://1.2.3.4:9090",
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 content: JSON.stringify({
